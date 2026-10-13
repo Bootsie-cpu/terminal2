@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NETRUN // Global Intelligence</title>
+
+<!-- Independent Web App Settings (Unlocks the Browser Install Button) -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="NETRUN">
+<link rel="manifest" href="data:application/json,{%22name%22:%22NETRUN%22,%22short_name%22:%22NETRUN%22,%22start_url%22:%22.%22,%22display%22:%22standalone%22,%22background_color%22:%22%23050907%22,%22theme_color%22:%22%23050907%22}">
+
+<!-- Leaflet Map Engine Infrastructure -->
+<link rel="stylesheet" href="https://unpkg.com" />
+<script src="https://unpkg.com"></script>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#050907;color:#80ffad;font:14px monospace}
+header{padding:18px;border-bottom:1px solid #194b30;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+h2{margin:0;letter-spacing:3px}
+small{color:#599873}
+main{padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.panel{border:1px solid #194b30;background:#08110c;padding:14px;min-width:0;display:flex;flex-direction:column}
+h3{font-size:12px;color:#52ff94;letter-spacing:2px;margin-top:0}
+#map{width:100%;height:270px;background:#030805;display:block}
+#output{height:260px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;background:#030805;padding:8px;border:1px solid #194b30}
+form{display:flex;gap:8px;margin-top:10px;margin-bottom:10px}
+input{min-width:0;flex:1;background:#030805;border:1px solid #286341;padding:12px;color:#9dffba;font:inherit}
+button{background:#12351f;color:#80ffad;border:1px solid #398452;padding:10px;font:inherit;cursor:pointer}
+button:hover{background:#205331}
+.green{color:#54ff8b}.muted{color:#659078}.amber{color:#ffb74d}
+#geo-map{width:100%;height:220px;background:#030805;border:1px solid #286341;margin-top:10px}
+.leaflet-container { background: #050907 !important; }
+.leaflet-tile { filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%); }
+@media(max-width:650px){main{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div><h2>NETRUN <small>v1.2</small></h2>
+  <small>GLOBAL NETWORK INTELLIGENCE</small></div>
+  <div class="green">● TERMINAL ONLINE</div>
+</header>
+<main>
+<section class="panel">
+<h3>LIVE DATA TOPOLOGY // REAL GLOBAL FEED</h3>
+<canvas id="map"></canvas>
+<p class="muted">Live global telemetry feed. Active pulses map actual geological data packets captured live.</p>
+<button onclick="fetchRealTelemetry()">FORCE LIVE REFRESH</button>
+</section>
+
+<section class="panel">
+<h3>COMMAND TERMINAL</h3>
+<div id="output">NETRUN SYSTEM INITIALIZED
+Type help to list commands.
+
+</div>
+<form id="form">
+<input id="cmd" autocomplete="off" autofocus placeholder="Enter command...">
+<button>EXECUTE</button>
+</form>
+<p class="muted">Use only systems and services you are authorized to inspect.</p>
+</section>
+
+<section class="panel">
+<h3>PUBLIC IP INTELLIGENCE & GEOLOCATION</h3>
+<p>Look up a public IP address or a domain name to target it on the map.</p>
+<form id="lookup">
+<input id="target" placeholder="example.com or an IP">
+<button>LOCATE TARGET</button>
+</form>
+<div id="result" class="muted"></div>
+<div id="geo-map"></div>
+</section>
+
+<section class="panel">
+<h3>WEBSITE DISSECTOR (SOURCE CODE EXPLORER)</h3>
+<p>Input a URL to bypass browser sandboxing, inspect its headers, and dump raw components.</p>
+<form id="dissect-form">
+<input id="dissect-url" placeholder="https://example.com" value="https://example.com">
+<button>DISSECT TARGET</button>
+</form>
+<div id="dissect-output" style="height:220px;overflow:auto;background:#030805;border:1px solid #286341;padding:8px;font-size:12px;white-space:pre-wrap;overflow-wrap:anywhere;color:#9dffba;">Submit a domain to dissect.</div>
+</section>
+</main>
+
+<!-- This links to our separate code script file so it doesn't cut off -->
+<script src="app.js"></script>
+</body>
+</html>
